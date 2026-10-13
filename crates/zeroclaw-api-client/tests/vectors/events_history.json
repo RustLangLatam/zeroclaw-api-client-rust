@@ -1,0 +1,65 @@
+{
+ "route": "/api/events/history",
+ "build": "0.8.5",
+ "response": {
+  "events": [
+   {
+    "agent_alias": "zc_agent_00000000000000000000000000000000",
+    "channel": "wss",
+    "model": "gpt-5.4-mini",
+    "model_provider": "openai.example_gpt_5_4_mini",
+    "source": "observability",
+    "timestamp": "2026-10-13T17:21:29.545579589+00:00",
+    "turn_id": "00000000-0000-0000-0000-000000000000",
+    "type": "agent_start"
+   },
+   {
+    "agent_alias": "zc_agent_00000000000000000000000000000000",
+    "channel": "wss",
+    "messages_count": 2,
+    "model": "gpt-5.4-mini",
+    "model_provider": "openai.example_gpt_5_4_mini",
+    "source": "observability",
+    "timestamp": "2026-10-13T17:21:29.546071328+00:00",
+    "turn_id": "00000000-0000-0000-0000-000000000000",
+    "type": "llm_request"
+   },
+   {
+    "agent_alias": "zc_agent_00000000000000000000000000000000",
+    "channel": "wss",
+    "cost_usd": null,
+    "duration_ms": 1672,
+    "input_tokens": 3180,
+    "model": "gpt-5.4-mini",
+    "model_provider": "openai.example_gpt_5_4_mini",
+    "output_tokens": 25,
+    "source": "observability",
+    "timestamp": "2026-10-13T17:21:31.217705720+00:00",
+    "tokens_used": 3205,
+    "turn_id": "00000000-0000-0000-0000-000000000000",
+    "type": "agent_end"
+   },
+   {
+    "agent_alias": "zc_agent_00000000000000000000000000000000",
+    "channel": "wss",
+    "model": "gpt-5.4-mini",
+    "model_provider": "openai.example_gpt_5_4_mini",
+    "source": "observability",
+    "timestamp": "2026-10-13T17:21:31.240545333+00:00",
+    "turn_id": "00000000-0000-0000-0000-000000000000",
+    "type": "agent_start"
+   },
+   {
+    "agent_alias": "zc_agent_00000000000000000000000000000000",
+    "channel": "wss",
+    "messages_count": 2,
+    "model": "gpt-5.4-mini",
+    "model_provider": "openai.example_gpt_5_4_mini",
+    "source": "observability",
+    "timestamp": "2026-10-13T17:21:31.241140076+00:00",
+    "turn_id": "00000000-0000-0000-0000-000000000000",
+    "type": "llm_request"
+   }
+  ]
+ }
+}

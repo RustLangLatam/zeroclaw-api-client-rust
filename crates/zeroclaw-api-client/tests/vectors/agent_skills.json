@@ -1,0 +1,8 @@
+{
+ "route": "/api/agents/zc_agent_00000000000000000000000000000000/skills",
+ "build": "0.8.5",
+ "response": {
+  "agent": "zc_agent_00000000000000000000000000000000",
+  "skills": []
+ }
+}

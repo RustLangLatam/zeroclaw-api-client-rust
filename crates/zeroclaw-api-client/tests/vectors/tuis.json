@@ -1,0 +1,7 @@
+{
+ "route": "/api/tuis",
+ "build": "0.8.5",
+ "response": {
+  "tuis": []
+ }
+}

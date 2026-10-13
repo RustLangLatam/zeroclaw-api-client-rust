@@ -1,0 +1,60 @@
+{
+ "route": "/api/tools",
+ "build": "0.8.5",
+ "response": {
+  "tools": [
+   {
+    "description": "Create a poll in a messaging channel. Channels that support native polls get a native poll card; the rest get a numbered text message with emoji reactions for voting. On ACP channels that advertise elicitation.form, the tool blocks until the user picks and returns a JSON-encoded result string with keys `question`, `answer` (or `answers` for multi-select), and `channel`; otherwise it returns a human-readable confirmation string.",
+    "name": "poll",
+    "parameters": {
+     "properties": {
+      "channel": {
+       "description": "Target channel name. Defaults to the first available channel if omitted.",
+       "type": "string"
+      },
+      "duration_minutes": {
+       "description": "Poll duration in minutes (default: 60)",
+       "minimum": 1,
+       "type": "integer"
+      },
+      "multi_select": {
+       "description": "Allow multiple selections (default: false)",
+       "type": "boolean"
+      },
+      "options": {
+       "description": "Poll answer options (2-10 items)",
+       "items": {
+        "type": "string"
+       },
+       "maxItems": 10,
+       "minItems": 2,
+       "type": "array"
+      },
+      "question": {
+       "description": "The poll question",
+       "type": "string"
+      },
+      "recipient": {
+       "description": "Recipient/chat identifier within the channel (e.g., chat_id for Telegram, channel_id for Slack)",
+       "type": "string"
+      },
+      "vote_reply": {
+       "description": "What happens when someone votes, on channels with native polls. 'ignore' (default) records votes silently, for polls that only gather opinions. 'in_chat' answers each voter where the poll was posted. 'direct' answers each voter privately, for a poll that opens a conversation such as taking an order.",
+       "enum": [
+        "ignore",
+        "in_chat",
+        "direct"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "question",
+      "options"
+     ],
+     "type": "object"
+    }
+   }
+  ]
+ }
+}

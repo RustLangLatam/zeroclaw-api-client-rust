@@ -1,0 +1,38 @@
+{
+ "route": "/api/skills/slash-option-kinds",
+ "build": "0.8.5",
+ "response": {
+  "kinds": [
+   {
+    "manifest_name": "string",
+    "supports_choices": true,
+    "supports_numeric_bounds": false,
+    "supports_length_bounds": true
+   },
+   {
+    "manifest_name": "integer",
+    "supports_choices": true,
+    "supports_numeric_bounds": true,
+    "supports_length_bounds": false
+   },
+   {
+    "manifest_name": "number",
+    "supports_choices": true,
+    "supports_numeric_bounds": true,
+    "supports_length_bounds": false
+   },
+   {
+    "manifest_name": "boolean",
+    "supports_choices": false,
+    "supports_numeric_bounds": false,
+    "supports_length_bounds": false
+   },
+   {
+    "manifest_name": "user",
+    "supports_choices": false,
+    "supports_numeric_bounds": false,
+    "supports_length_bounds": false
+   }
+  ]
+ }
+}

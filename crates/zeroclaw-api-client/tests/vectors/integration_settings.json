@@ -1,0 +1,108 @@
+{
+ "route": "/api/integrations/settings",
+ "build": "0.8.5",
+ "response": {
+  "settings": {
+   "01.AI (Yi)": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "AI21 Labs": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "AMQP": {
+    "category": "Chat",
+    "enabled": false,
+    "status": "Available"
+   },
+   "AiHubMix": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Amazon Bedrock": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Anthropic": {
+    "category": "AiModel",
+    "enabled": true,
+    "status": "Active"
+   },
+   "Anyscale": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Arcee AI": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Astrai": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Atlas Cloud": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Atomic Chat": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Avian": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Azure OpenAI": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Baichuan": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Baseten": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Bluesky": {
+    "category": "Chat",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Browser": {
+    "category": "ToolsAutomation",
+    "enabled": true,
+    "status": "Active"
+   },
+   "Cerebras": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   },
+   "ClawdTalk": {
+    "category": "Chat",
+    "enabled": false,
+    "status": "Available"
+   },
+   "Cloudflare AI": {
+    "category": "AiModel",
+    "enabled": false,
+    "status": "Available"
+   }
+  }
+ }
+}

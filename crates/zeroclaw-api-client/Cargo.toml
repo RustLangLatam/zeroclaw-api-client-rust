@@ -1,0 +1,28 @@
+[package]
+name = "zeroclaw-api-client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Independent, typed, resilient async client for the ZeroClaw gateway (HTTP, events, chat). Not affiliated with ZeroClaw Labs."
+repository.workspace = true
+rust-version.workspace = true
+readme = "../../README.md"
+keywords = ["zeroclaw", "ai", "agent", "sdk", "api-client"]
+categories = ["api-bindings", "web-programming::http-client"]
+publish = true
+
+[dependencies]
+futures-util = { workspace = true }
+reqwest = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["net", "time"] }
+tokio-tungstenite = { workspace = true }
+tower = { workspace = true }
+url = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread", "net", "test-util"] }
+http = "1"
+wiremock = { workspace = true }

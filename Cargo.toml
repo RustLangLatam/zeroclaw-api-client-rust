@@ -1,0 +1,30 @@
+[workspace]
+members = ["crates/zeroclaw-api-client"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/RustLangLatam/zeroclaw-api-client-rust"
+# Kept at the lowest version the dependencies allow, so applications pinned
+# below ZeroClaw's own toolchain (1.96) can depend on the SDK. CI checks it.
+rust-version = "1.89"
+
+[workspace.dependencies]
+futures-util = { version = "0.3", default-features = false, features = ["std", "sink"] }
+reqwest = { version = "0.13.5", default-features = false, features = ["json", "multipart", "stream", "rustls"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+tokio = { version = "1.53", default-features = false }
+tower = { version = "0.5.3", default-features = false, features = ["util", "timeout", "retry", "limit"] }
+tokio-tungstenite = { version = "0.27", default-features = false, features = ["connect", "handshake", "rustls-tls-webpki-roots"] }
+url = "2.5"
+wiremock = "0.6"
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+strip = true

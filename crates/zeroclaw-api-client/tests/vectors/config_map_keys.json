@@ -1,0 +1,11 @@
+{
+ "route": "/api/config/map-keys?path=agents",
+ "build": "0.8.5",
+ "response": {
+  "keys": [
+   "zc_agent_00000000000000000000000000000000",
+   "zc_agent_00000000000000000000000000000000"
+  ],
+  "path": "agents"
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "route": "/api/channels",
+ "build": "0.8.5",
+ "response": {
+  "channels": [
+   {
+    "alias": "wa_00000000000000000000000000000000",
+    "compiled": true,
+    "enabled": true,
+    "health": "degraded",
+    "last_message_at": null,
+    "message_count": 0,
+    "name": "whatsapp.wa_00000000000000000000000000000000",
+    "owning_agent": "zc_agent_00000000000000000000000000000000",
+    "readiness": {
+     "authenticated": "ready",
+     "bound_to_agent": "ready",
+     "enabled": "ready",
+     "listening": "unknown",
+     "notes": [
+      "Live listener readiness is not checked for `whatsapp` channels yet."
+     ],
+     "requirements": []
+    },
+    "status": "unknown",
+    "type": "whatsapp"
+   }
+  ]
+ }
+}

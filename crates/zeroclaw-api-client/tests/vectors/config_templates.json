@@ -1,0 +1,38 @@
+{
+ "route": "/api/config/templates",
+ "build": "0.8.5",
+ "response": {
+  "templates": [
+   {
+    "path": "model_routes",
+    "kind": "list",
+    "value_type": "ModelRouteConfig",
+    "description": "Model-routing rules — route `hint:<name>` to specific model_provider + model combos."
+   },
+   {
+    "path": "embedding_routes",
+    "kind": "list",
+    "value_type": "EmbeddingRouteConfig",
+    "description": "Embedding-routing rules — route `hint:<name>` to specific model_provider + model combos for embedding requests."
+   },
+   {
+    "path": "cron",
+    "kind": "map",
+    "value_type": "CronJobDecl",
+    "description": "Declarative cron jobs (`[cron.<alias>]`), alias-keyed. Each entry is a named scheduled job synced into the database at scheduler startup. Subsystem runtime knobs (enable/disable, catch-up, run-history retention) live on `[scheduler]`."
+   },
+   {
+    "path": "agents",
+    "kind": "map",
+    "value_type": "AliasedAgentConfig",
+    "description": "Aliased agents in this install. Each entry under `[agents.<alias>]` is one user-facing agent with its own identity, channels, model provider, risk profile, workspace, and memory scope. `DelegateTool` consults this map when one agent delegates a subtask to another."
+   },
+   {
+    "path": "risk_profiles",
+    "kind": "map",
+    "value_type": "RiskProfileConfig",
+    "description": "Named risk/autonomy profiles (`[risk_profiles.<alias>]`)."
+   }
+  ]
+ }
+}

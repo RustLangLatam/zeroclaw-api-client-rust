@@ -1,0 +1,17 @@
+{
+ "route": "/api/devices",
+ "build": "0.8.5",
+ "response": {
+  "count": 1,
+  "devices": [
+   {
+    "device_type": null,
+    "id": "00000000-0000-0000-0000-000000000000",
+    "ip_address": "192.0.2.1",
+    "last_seen": "2026-10-08T22:39:55.029403393Z",
+    "name": null,
+    "paired_at": "2026-10-08T22:39:55.029403311Z"
+   }
+  ]
+ }
+}

@@ -1,0 +1,22 @@
+# Clippy configuration for the ZeroClaw API client.
+# Thresholds follow ZeroClaw's own clippy.toml so code moves between the two
+# repositories without new lint noise.
+
+cognitive-complexity-threshold = 30
+
+too-many-arguments-threshold = 10
+
+too-many-lines-threshold = 200
+
+# A library never prints or logs on its own: it returns typed errors and lets
+# the application decide what to report.
+disallowed-macros = [
+    { path = "std::println", reason = "a library must not write to stdout; return the value or an error" },
+    { path = "std::eprintln", reason = "a library must not write to stderr; return an error" },
+    { path = "std::dbg", reason = "debug output must not ship in the SDK" },
+]
+
+# The SDK spawns no background tasks: every request runs on the caller's task.
+disallowed-methods = [
+    { path = "tokio::spawn", reason = "the SDK spawns no tasks; streams are driven by the caller" },
+]

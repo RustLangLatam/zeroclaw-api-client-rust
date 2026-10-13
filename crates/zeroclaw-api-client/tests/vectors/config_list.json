@@ -1,0 +1,56 @@
+{
+ "route": "/api/config/list?prefix=gateway",
+ "build": "0.8.5",
+ "response": {
+  "entries": [
+   {
+    "path": "gateway.port",
+    "category": "Gateway",
+    "kind": "integer",
+    "type_hint": "u16",
+    "value": "42617",
+    "populated": true,
+    "is_secret": false
+   },
+   {
+    "path": "gateway.host",
+    "category": "Gateway",
+    "kind": "string",
+    "type_hint": "String",
+    "value": "192.0.2.1",
+    "populated": true,
+    "is_secret": false,
+    "is_env_overridden": true
+   },
+   {
+    "path": "gateway.require_pairing",
+    "category": "Gateway",
+    "kind": "bool",
+    "type_hint": "bool",
+    "value": "true",
+    "populated": true,
+    "is_secret": false
+   },
+   {
+    "path": "gateway.allow_public_bind",
+    "category": "Gateway",
+    "kind": "bool",
+    "type_hint": "bool",
+    "value": "true",
+    "populated": true,
+    "is_secret": false,
+    "is_env_overridden": true
+   },
+   {
+    "path": "gateway.allow_remote_admin",
+    "category": "Gateway",
+    "kind": "bool",
+    "type_hint": "bool",
+    "value": "true",
+    "populated": true,
+    "is_secret": false,
+    "is_env_overridden": true
+   }
+  ]
+ }
+}

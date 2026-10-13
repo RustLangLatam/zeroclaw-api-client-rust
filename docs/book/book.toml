@@ -1,0 +1,21 @@
+[book]
+title = "ZeroClaw API Client"
+description = "Documentation for the Rust client of the ZeroClaw gateway HTTP API."
+authors = ["RustLangLatam"]
+language = "en"
+src = "src"
+
+[output.html]
+default-theme = "default-dark"
+preferred-dark-theme = "default-dark"
+git-repository-url = "https://github.com/RustLangLatam/zeroclaw-api-client-rust"
+edit-url-template = "https://github.com/RustLangLatam/zeroclaw-api-client-rust/edit/master/docs/book/{path}"
+site-url = "/"
+
+[output.html.search]
+enable = true
+limit-results = 30
+use-boolean-and = true
+
+[output.html.print]
+enable = false

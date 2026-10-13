@@ -1,0 +1,33 @@
+{
+ "route": "/api/config/catalog",
+ "build": "0.8.5",
+ "response": {
+  "model_providers": [
+   {
+    "name": "openrouter",
+    "display_name": "OpenRouter",
+    "local": false
+   },
+   {
+    "name": "anthropic",
+    "display_name": "Anthropic",
+    "local": false
+   },
+   {
+    "name": "openai",
+    "display_name": "OpenAI",
+    "local": false
+   },
+   {
+    "name": "telnyx",
+    "display_name": "Telnyx",
+    "local": false
+   },
+   {
+    "name": "azure",
+    "display_name": "Azure OpenAI",
+    "local": false
+   }
+  ]
+ }
+}

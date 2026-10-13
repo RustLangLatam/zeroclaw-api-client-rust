@@ -1,0 +1,7 @@
+{
+ "route": "/api/config/drift",
+ "build": "0.8.5",
+ "response": {
+  "drifted": []
+ }
+}

@@ -1,0 +1,138 @@
+{
+ "route": "/api/quickstart/state",
+ "build": "0.8.5",
+ "response": {
+  "quickstart_completed": false,
+  "agents": [
+   "zc_agent_00000000000000000000000000000000",
+   "zc_agent_00000000000000000000000000000000"
+  ],
+  "risk_profiles": [
+   "zc_agent_00000000000000000000000000000000",
+   "zc_agent_00000000000000000000000000000000"
+  ],
+  "runtime_profiles": [
+   "example"
+  ],
+  "default_runtime_profile": "unbounded",
+  "model_providers": [
+   "anthropic.example",
+   "deepseek.example",
+   "openai.example",
+   "openai.example_gpt_4_1",
+   "openai.example_gpt_4_1_mini"
+  ],
+  "channels": [
+   "whatsapp.wa_00000000000000000000000000000000"
+  ],
+  "unassigned_channels": [],
+  "storage": [],
+  "model_provider_types": [
+   {
+    "kind": "openrouter",
+    "display_name": "OpenRouter",
+    "local": false
+   },
+   {
+    "kind": "anthropic",
+    "display_name": "Anthropic",
+    "local": false
+   },
+   {
+    "kind": "openai",
+    "display_name": "OpenAI",
+    "local": false
+   },
+   {
+    "kind": "telnyx",
+    "display_name": "Telnyx",
+    "local": false
+   },
+   {
+    "kind": "azure",
+    "display_name": "Azure OpenAI",
+    "local": false
+   }
+  ],
+  "channel_types": [
+   {
+    "kind": "telegram",
+    "display_name": "Telegram",
+    "local": false
+   },
+   {
+    "kind": "discord",
+    "display_name": "Discord",
+    "local": false
+   },
+   {
+    "kind": "slack",
+    "display_name": "Slack",
+    "local": false
+   },
+   {
+    "kind": "mattermost",
+    "display_name": "Mattermost",
+    "local": false
+   },
+   {
+    "kind": "imessage",
+    "display_name": "iMessage",
+    "local": false
+   }
+  ],
+  "risk_presets": [
+   {
+    "preset_name": "locked_down",
+    "label": "Locked Down",
+    "help": "Tightest defaults. Workspace-only filesystem access, approval required for medium and high risk, no shell environment passthrough."
+   },
+   {
+    "preset_name": "balanced",
+    "label": "Balanced",
+    "help": "Trusted daily driver for a personal dev box. Supervised, workspace-scoped with sensitive paths blocked and the sandbox on. Any command runs without an allowlist, but high-risk commands stay blocked unless explicitly allowlisted. Recommended for most users."
+   },
+   {
+    "preset_name": "yolo",
+    "label": "YOLO",
+    "help": "Full autonomy. No approval gates, no command denylist, no workspace scoping. Only pick this if you know what you're doing on a machine you don't mind breaking."
+   }
+  ],
+  "runtime_presets": [
+   {
+    "preset_name": "tight",
+    "label": "Tight",
+    "help": "Small budgets and short timeouts. Good for cheap models, metered API keys, or tight feedback loops where you want the agent to stop and ask early rather than burn budget."
+   },
+   {
+    "preset_name": "local_small",
+    "label": "Local Small",
+    "help": "Compact no-text-fallback profile for smaller local models. Keeps context and tool results small, disables parallel tool fan-out, and requires native or structured tool calls."
+   },
+   {
+    "preset_name": "balanced",
+    "label": "Balanced",
+    "help": "Middle-of-the-road operational defaults. Suits most users most of the time."
+   },
+   {
+    "preset_name": "unbounded",
+    "label": "Unbounded",
+    "help": "Wide-open budgets and long timeouts. Pick this when you're actively driving the agent through a hard task and don't want it to throttle."
+   }
+  ],
+  "memory_kinds": [
+   "sqlite",
+   "markdown",
+   "postgres",
+   "qdrant",
+   "lucid"
+  ],
+  "personality_files": [
+   "SOUL.md",
+   "IDENTITY.md",
+   "USER.md",
+   "AGENTS.md",
+   "TOOLS.md"
+  ]
+ }
+}

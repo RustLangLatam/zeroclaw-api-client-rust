@@ -1,0 +1,10 @@
+{
+ "route": "/api/config/status",
+ "build": "0.8.5",
+ "response": {
+  "needs_quickstart": false,
+  "reason": "has_dispatchable_agent",
+  "has_partial_state": true,
+  "missing": []
+ }
+}

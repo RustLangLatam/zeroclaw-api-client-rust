@@ -1,0 +1,68 @@
+{
+ "route": "/api/config/sections",
+ "build": "0.8.5",
+ "response": {
+  "sections": [
+   {
+    "key": "providers.models",
+    "label": "Model providers",
+    "help": "Pick a model provider to configure (Anthropic, OpenAI, OpenRouter, Ollama, custom OpenAI-compatible gateways, etc.). Multiple aliases per provider are supported — e.g. anthropic.production and anthropic.dev can coexist.",
+    "has_picker": true,
+    "completed": false,
+    "ready": true,
+    "group": "Foundation",
+    "is_quickstart": true,
+    "shape": "typed_family_map",
+    "cost_category": "models"
+   },
+   {
+    "key": "model_routes",
+    "label": "Model routes",
+    "help": "Named model routing hints (e.g. reasoning, fast, code). Each route maps a hint to a specific provider + model combo. Use `hint:<name>` as the model parameter to dispatch through a route.",
+    "has_picker": true,
+    "completed": false,
+    "ready": false,
+    "group": "Foundation",
+    "is_quickstart": true,
+    "shape": "one_tier_alias_map",
+    "cost_category": ""
+   },
+   {
+    "key": "embedding_routes",
+    "label": "Embedding routes",
+    "help": "Named embedding routing hints (e.g. semantic, archive, faq). Each route maps a hint to an embedding-capable provider + model combo. Use `hint:<name>` as the embedding_model parameter.",
+    "has_picker": true,
+    "completed": false,
+    "ready": false,
+    "group": "Foundation",
+    "is_quickstart": true,
+    "shape": "one_tier_alias_map",
+    "cost_category": ""
+   },
+   {
+    "key": "risk_profiles",
+    "label": "Risk profiles",
+    "help": "Named risk profiles binding allowlists, denylists, and approval thresholds. Agents reference one via `agents.<alias>.risk_profile`.",
+    "has_picker": true,
+    "completed": false,
+    "ready": true,
+    "group": "Foundation",
+    "is_quickstart": true,
+    "shape": "one_tier_alias_map",
+    "cost_category": ""
+   },
+   {
+    "key": "runtime_profiles",
+    "label": "Runtime profiles",
+    "help": "Named runtime tuning profiles (token limits, retry policy, timeouts). Agents reference one via `agents.<alias>.runtime_profile`.",
+    "has_picker": true,
+    "completed": false,
+    "ready": true,
+    "group": "Foundation",
+    "is_quickstart": true,
+    "shape": "one_tier_alias_map",
+    "cost_category": ""
+   }
+  ]
+ }
+}

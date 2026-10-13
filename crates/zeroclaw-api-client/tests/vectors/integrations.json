@@ -1,0 +1,43 @@
+{
+ "route": "/api/integrations",
+ "build": "0.8.5",
+ "response": {
+  "integrations": [
+   {
+    "category": "Chat",
+    "category_label": "Chat Providers",
+    "description": "connect your bot",
+    "name": "Telegram",
+    "status": "Available"
+   },
+   {
+    "category": "Chat",
+    "category_label": "Chat Providers",
+    "description": "connect your bot",
+    "name": "Discord",
+    "status": "Available"
+   },
+   {
+    "category": "Chat",
+    "category_label": "Chat Providers",
+    "description": "connect your bot",
+    "name": "Slack",
+    "status": "Available"
+   },
+   {
+    "category": "Chat",
+    "category_label": "Chat Providers",
+    "description": "connect to your bot",
+    "name": "Mattermost",
+    "status": "Available"
+   },
+   {
+    "category": "Chat",
+    "category_label": "Chat Providers",
+    "description": "macOS only",
+    "name": "iMessage",
+    "status": "Available"
+   }
+  ]
+ }
+}

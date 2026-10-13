@@ -1,0 +1,123 @@
+{
+ "route": "/api/status",
+ "build": "0.8.5",
+ "response": {
+  "agent_alias": null,
+  "allow_self_upgrade": false,
+  "channels": {
+   "whatsapp.wa_00000000000000000000000000000000": true
+  },
+  "check_updates": true,
+  "daemon_started_at": "2026-10-13T12:05:36.461580240+00:00",
+  "gateway_port": 42617,
+  "health": {
+   "components": {
+    "channel:whatsapp.wa_00000000000000000000000000000000": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:43:27.781455358+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:43:27.781444731+00:00"
+    },
+    "channels": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.780228902+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.780225997+00:00"
+    },
+    "control-plane": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.755932385+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.755930835+00:00"
+    },
+    "daemon": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.755766663+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.755760553+00:00"
+    },
+    "enroll": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.758275508+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.758273980+00:00"
+    },
+    "gateway": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.788711567+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.788709763+00:00"
+    },
+    "mqtt": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.758269241+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.758268069+00:00"
+    },
+    "relay": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.758256216+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.758254576+00:00"
+    },
+    "scheduler": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:43:27.759184702+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:43:27.759183845+00:00"
+    },
+    "socket": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.758239200+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.758235543+00:00"
+    },
+    "wss": {
+     "last_error": null,
+     "last_ok": "2026-10-13T17:21:27.758249683+00:00",
+     "restart_count": 0,
+     "status": "ok",
+     "updated_at": "2026-10-13T17:21:27.758245857+00:00"
+    }
+   },
+   "pid": 1,
+   "updated_at": "2026-10-13T17:43:31.169958740+00:00",
+   "uptime_seconds": 20273
+  },
+  "live_channel_config": [
+   "sender_routes",
+   "whatsapp_allowlists",
+   "whatsapp_allowed_groups"
+  ],
+  "locale": "en",
+  "memory_backend": "sqlite",
+  "model": "gpt-4o-mini",
+  "model_provider": "openai.example_gpt_4o_mini",
+  "nodes": {
+   "connected": [],
+   "mdns_peers": []
+  },
+  "paired": true,
+  "process": {
+   "cpu_percent": 0.09112968295812607,
+   "num_cpus": 16,
+   "rss_bytes": 114724864,
+   "system_ram_total_bytes": 16476418048
+  },
+  "restart_hint": "docker compose restart",
+  "restart_mode": "manual",
+  "temperature": null,
+  "uptime_seconds": 20273,
+  "version": "0.8.5"
+ }
+}

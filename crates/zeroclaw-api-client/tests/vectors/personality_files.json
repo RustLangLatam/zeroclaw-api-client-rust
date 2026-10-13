@@ -1,0 +1,39 @@
+{
+ "route": "/api/personality?agent=zc_agent_00000000000000000000000000000000",
+ "build": "0.8.5",
+ "response": {
+  "files": [
+   {
+    "filename": "SOUL.md",
+    "exists": true,
+    "size": 13477,
+    "mtime_ms": 1791907569729
+   },
+   {
+    "filename": "IDENTITY.md",
+    "exists": true,
+    "size": 129,
+    "mtime_ms": 1791907569730
+   },
+   {
+    "filename": "USER.md",
+    "exists": true,
+    "size": 212,
+    "mtime_ms": 1791907569730
+   },
+   {
+    "filename": "AGENTS.md",
+    "exists": true,
+    "size": 1468,
+    "mtime_ms": 1791907569729
+   },
+   {
+    "filename": "TOOLS.md",
+    "exists": true,
+    "size": 772,
+    "mtime_ms": 1791907569730
+   }
+  ],
+  "max_chars": 20000
+ }
+}

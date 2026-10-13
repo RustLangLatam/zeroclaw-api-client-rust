@@ -1,0 +1,9 @@
+{
+ "route": "/api/cron/settings",
+ "build": "0.8.5",
+ "response": {
+  "catch_up_on_startup": true,
+  "enabled": true,
+  "max_run_history": 50
+ }
+}

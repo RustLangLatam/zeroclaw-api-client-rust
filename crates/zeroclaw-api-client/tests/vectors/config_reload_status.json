@@ -1,0 +1,7 @@
+{
+ "route": "/api/config/reload-status",
+ "build": "0.8.5",
+ "response": {
+  "pending_reload": false
+ }
+}

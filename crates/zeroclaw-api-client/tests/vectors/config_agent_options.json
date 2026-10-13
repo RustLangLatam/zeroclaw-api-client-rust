@@ -1,0 +1,36 @@
+{
+ "route": "/api/config/agent-options",
+ "build": "0.8.5",
+ "response": {
+  "channels": [
+   "whatsapp.wa_00000000000000000000000000000000"
+  ],
+  "channel_types": [
+   "whatsapp"
+  ],
+  "model_providers": [
+   "anthropic.example",
+   "deepseek.example",
+   "openai.example",
+   "openai.example_gpt_4_1",
+   "openai.example_gpt_4_1_mini"
+  ],
+  "risk_profiles": [
+   "zc_agent_00000000000000000000000000000000",
+   "zc_agent_00000000000000000000000000000000"
+  ],
+  "runtime_profiles": [
+   "example"
+  ],
+  "skill_bundles": [],
+  "knowledge_bundles": [],
+  "mcp_bundles": [
+   "zc_agent_00000000000000000000000000000000",
+   "zc_agent_00000000000000000000000000000000"
+  ],
+  "agents": [
+   "zc_agent_00000000000000000000000000000000",
+   "zc_agent_00000000000000000000000000000000"
+  ]
+ }
+}
