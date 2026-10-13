@@ -2,12 +2,11 @@
 
 ## Install
 
-Add the crate to your `Cargo.toml`:
+Add the crate from [crates.io](https://crates.io/crates/zeroclaw-api-client):
 
-```toml
-[dependencies]
-zeroclaw-api-client = { git = "https://github.com/RustLangLatam/zeroclaw-api-client-rust" }
-tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+```sh
+cargo add zeroclaw-api-client
+cargo add tokio --features macros,rt-multi-thread
 ```
 
 The client is async and runs on Tokio. It needs Rust 1.89 or newer
