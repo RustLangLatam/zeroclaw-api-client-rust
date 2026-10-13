@@ -6,6 +6,9 @@
 
 <p align="center">
   <a href="https://github.com/RustLangLatam/zeroclaw-api-client-rust/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/RustLangLatam/zeroclaw-api-client-rust/ci.yml?branch=master&label=build" alt="Build Status" /></a>
+  <a href="https://crates.io/crates/zeroclaw-api-client"><img src="https://img.shields.io/crates/v/zeroclaw-api-client?logo=rust" alt="crates.io" /></a>
+  <a href="https://docs.rs/zeroclaw-api-client"><img src="https://img.shields.io/docsrs/zeroclaw-api-client?label=docs.rs" alt="docs.rs" /></a>
+  <a href="https://github.com/RustLangLatam/zeroclaw-api-client-rust/releases/latest"><img src="https://img.shields.io/github/v/release/RustLangLatam/zeroclaw-api-client-rust?label=release" alt="Latest release" /></a>
   <a href="https://github.com/RustLangLatam/zeroclaw-api-client-rust/blob/master/LICENSE-APACHE"><img src="https://img.shields.io/badge/license-MIT%20OR%20Apache%202.0-blue.svg" alt="License" /></a>
   <a href="https://www.rust-lang.org"><img src="https://img.shields.io/badge/rust-edition%202024-orange?logo=rust" alt="Rust Edition 2024" /></a>
   <a href="https://github.com/RustLangLatam/zeroclaw-api-client-rust/blob/master/docs/book/src/architecture/decisions/ADR-003-rust-floor.md"><img src="https://img.shields.io/badge/MSRV-1.89-orange?logo=rust" alt="MSRV 1.89" /></a>
@@ -41,6 +44,11 @@ its Server-Sent Events stream and its WebSocket chat.
 
 > An independent, community-maintained client. It is not affiliated with or
 > endorsed by ZeroClaw Labs; ZeroClaw is a trademark of ZeroClaw Labs.
+
+```sh
+cargo add zeroclaw-api-client
+cargo add tokio --features macros,rt-multi-thread
+```
 
 ```rust,no_run
 use zeroclaw_api_client::Client;
@@ -218,11 +226,11 @@ verified against and the routes that need a newer one.
 
 - The book: `mdbook serve docs/book` — getting started, guides, reference,
   architecture and decisions.
-- The API: `cargo doc --open -p zeroclaw-api-client`.
+- The API: [docs.rs/zeroclaw-api-client](https://docs.rs/zeroclaw-api-client).
 
 ## Contributing
 
-Until the first release on crates.io, all work happens on `master`; see
+Work happens on branches with pull requests to `master`; see
 [CONTRIBUTING.md](https://github.com/RustLangLatam/zeroclaw-api-client-rust/blob/master/CONTRIBUTING.md) and [AGENTS.md](https://github.com/RustLangLatam/zeroclaw-api-client-rust/blob/master/AGENTS.md).
 
 ## License

@@ -42,7 +42,7 @@ mdbook build docs/book
 
 ## Branches and pull requests
 
-Until the first crates.io release, `master` is the only branch: commit to it
-directly, every commit passing the checks above. After it, branch from
-`master` (`feat/*`, `fix/*`, `docs/*`) and open a PR with the template filled
-in. Use conventional commits.
+Branch from `master` (`feat/*`, `fix/*`, `docs/*`) and open a PR with the
+template filled in; never push to `master` directly. Use conventional
+commits. Releases are tagged `vX.Y.Z` from `master` and published to
+crates.io; `CHANGELOG-next.md` becomes the release notes.

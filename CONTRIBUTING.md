@@ -3,20 +3,19 @@
 Thanks for your interest. Every kind of contribution helps: code, docs, bug
 reports and reports of gateway changes the client does not follow yet.
 
-**Until the first release on crates.io, `master` is the only branch:** commit
-to it directly, each commit passing every check below. After that release,
-work happens on `feat/*`, `fix/*` or `docs/*` branches with PRs to `master`.
+All PRs target **`master`**; never push to it directly.
 
 1. **Find the gateway side.** Every change starts from the ZeroClaw build the
    client targets ([Compatibility](docs/book/src/reference/compatibility.md)):
    the route in `crates/zeroclaw-gateway/src/lib.rs` and its handler.
-2. **Change, test, document.** Follow [AGENTS.md](AGENTS.md) and the
+2. **Branch.** `feat/*`, `fix/*` or `docs/*` from `master`.
+3. **Change, test, document.** Follow [AGENTS.md](AGENTS.md) and the
    step-by-step guide in
    [docs/book/src/contributing/architecture.md](docs/book/src/contributing/architecture.md).
-3. **Commit** with a conventional title (`feat: …`, `fix: …`, `docs: …`).
-   After the first release, open a PR with the template filled in. Do not add
-   bot or AI attribution footers, and name no application or company that
-   uses the client.
+4. **Open the PR** with the template filled in and conventional commit titles
+   (`feat: …`, `fix: …`, `docs: …`). Do not add bot or AI attribution
+   footers, and name no application or company that uses the client. Add
+   what changed for users to `CHANGELOG-next.md`.
 
 ## Checks
 

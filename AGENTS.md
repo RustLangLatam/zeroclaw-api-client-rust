@@ -25,7 +25,7 @@ The gateway is the source of truth for every request and response shape. This SD
 3. Keep one concern per PR. Avoid unrelated cleanup and do not mix broad formatting changes with functional changes.
 4. Do not add dependencies for minor convenience, speculative abstractions, or feature flags without a concrete use.
 5. Every endpoint gets a test at the HTTP boundary (`tests/`, against a mock gateway) that checks method, path, query, body, and decoding. Logic (parsing, mapping, decisions) gets unit tests written as vector tables: a list of inputs and expected outputs, one assertion loop. New response types get a captured vector (`scripts/capture-vectors.py`).
-6. Until the first crates.io release, `master` is the only branch: commit to it directly, each commit passing the full validation below. After that release, work on a non-`master` branch and open a PR to `master`.
+6. Work on a non-`master` branch (`feat/*`, `fix/*`, `docs/*`), open a PR to `master`, and never push directly to `master`. Releases are tagged `vX.Y.Z` from `master` and published to crates.io.
 7. Use conventional commits. Do not add bot or AI attribution footers.
 8. Name no application, company or deployment that uses the client: not in code, docs, test vectors, commits or PRs. Say "an application". Capture vectors with `ZEROCLAW_REDACT` set to your own names.
 
