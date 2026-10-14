@@ -113,6 +113,15 @@ impl WebhookApi<'_> {
             .get(&["a2a", alias, ".well-known", "agent-card.json"], &[])
             .await
     }
+
+    /// `GET /.well-known/agents-card.json`: the gateway's A2A catalog card,
+    /// whose skills list the published agents. Public. 404 when the gateway was built
+    /// without the `a2a` feature or `[a2a.server] enabled` is false.
+    pub async fn agent_catalog(&self) -> Result<Value> {
+        self.client
+            .get(&[".well-known", "agents-card.json"], &[])
+            .await
+    }
 }
 
 /// Answer of [`WebhookApi::send`].

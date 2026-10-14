@@ -26,7 +26,9 @@ common change, covering a gateway route.
    [Testing](./testing.md)).
 6. **Update the docs.** Regenerate the [endpoint map](../reference/endpoints.md)
    with `python3 scripts/endpoint-map.py --write` (CI fails while it is
-   stale), and update the guide of the area.
+   stale), and update the guide of the area. `python3 scripts/route-drift.py
+   <zeroclaw checkout>` then shows any gateway route still uncovered (CI
+   runs it against the targeted fork branch).
 
 ## Checks
 

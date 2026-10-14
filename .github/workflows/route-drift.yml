@@ -1,0 +1,36 @@
+name: Route Drift
+
+# The client against the gateway it targets: fails when the fork branch gains
+# a route the client does not call, or drops one it does. Runs weekly too,
+# since the fork moves without a change here.
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: ZeroClaw branch or tag to compare with
+        required: false
+
+permissions:
+  contents: read
+
+env:
+  ZEROCLAW_REPO: https://github.com/RustLangLatam/zeroclaw
+  ZEROCLAW_REF: ${{ inputs.ref || 'fix/whatsapp-silence-stopped-channel' }}
+
+jobs:
+  drift:
+    name: Gateway routes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the gateway source
+        run: |
+          git clone --depth 1 --branch "$ZEROCLAW_REF" --filter=blob:none --sparse "$ZEROCLAW_REPO" "$RUNNER_TEMP/zeroclaw"
+          git -C "$RUNNER_TEMP/zeroclaw" sparse-checkout set crates/zeroclaw-gateway
+      - run: python3 scripts/route-drift.py "$RUNNER_TEMP/zeroclaw"
