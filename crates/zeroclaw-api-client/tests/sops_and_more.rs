@@ -306,6 +306,12 @@ async fn a2a_returns_the_answer_text_or_the_rpc_error() {
         .respond_with(json(json!({ "name": "helper" })))
         .mount(&server)
         .await;
+    expect("GET", "/.well-known/agents-card.json")
+        .respond_with(json(
+            json!({ "name": "gateway", "skills": [{ "id": "helper" }] }),
+        ))
+        .mount(&server)
+        .await;
 
     let webhook = client.webhook();
     assert_eq!(webhook.a2a_send("helper", "Hi").await.unwrap(), "Hello");
@@ -319,6 +325,10 @@ async fn a2a_returns_the_answer_text_or_the_rpc_error() {
     );
     assert_eq!(
         webhook.agent_card("helper").await.unwrap()["name"],
+        "helper"
+    );
+    assert_eq!(
+        webhook.agent_catalog().await.unwrap()["skills"][0]["id"],
         "helper"
     );
 }

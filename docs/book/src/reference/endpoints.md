@@ -11,10 +11,30 @@ Routes the client deliberately does not call:
   `/sop/{path}`): providers and external systems call them, not clients;
 - `/api/plugins`, which only a `plugins-wasm` build has: not covered yet;
 - the bundled web UI (`/_app/*`) and the HTML API explorer (`/api/docs`);
-- the daemon's own protocols: `/acp` (zerocode) and `/ws/nodes` (nodes).
+- the daemon's own protocols: `/acp` (zerocode) and `/ws/nodes` (nodes);
+- aliases of routes the client calls: `/a2a/.well-known/agents-card.json`
+  (same card as `/.well-known/agents-card.json`) and `GET /api/doctor` (same
+  handler as `POST`).
+
+`scripts/route-drift.py <zeroclaw checkout>` compares this table with the
+routes the gateway's source declares, and CI runs it against the targeted
+fork branch.
+
+Some routes only exist when the gateway is built with a Cargo feature; on a
+build without it they answer 404 ([`Error::is_not_found`]):
+
+| Gateway feature | Default | Client methods |
+|---|---|---|
+| `a2a` | on | `webhook().agent_card`, `agent_catalog`, `a2a_send` (also need `[a2a.server] enabled = true`) |
+| `webauthn` | off | `webauthn()` |
+| `observability-prometheus` | on | `system().metrics` |
+| `plugins-wasm` | off | not covered |
+
+[`Error::is_not_found`]: https://docs.rs/zeroclaw-api-client/latest/zeroclaw_api_client/enum.Error.html#method.is_not_found
 
 | Method | Path | Module | Function |
 |---|---|---|---|
+| `GET` | `/.well-known/agents-card.json` | `webhook` | `agent_catalog` |
 | `POST` | `/a2a/{alias}` | `webhook` | `a2a_send` |
 | `GET` | `/a2a/{alias}/.well-known/agent-card.json` | `webhook` | `agent_card` |
 | `GET` | `/admin/paircode` | `pairing` | `admin_code` |

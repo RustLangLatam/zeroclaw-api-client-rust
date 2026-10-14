@@ -84,6 +84,14 @@ async fn every_read_decodes() {
     check("sops.runs", client.sops().runs(None).await);
     check("canvas.list", client.canvas().list().await);
     check("quickstart.state", client.quickstart().state().await);
+    check(
+        "webhook.agent_catalog",
+        client.webhook().agent_catalog().await,
+    );
+    check(
+        "webauthn.credentials",
+        client.webauthn().credentials("live").await,
+    );
 
     let channels = client.channels().list().await.unwrap();
     for channel in &channels {
@@ -117,5 +125,9 @@ async fn every_read_decodes() {
         check("agent.skills", agent.skills().await);
         check("system.tools(agent)", system.tools(Some(&alias)).await);
         check("cost.agent", client.cost().agent(&alias).await);
+        check(
+            "webhook.agent_card",
+            client.webhook().agent_card(&alias).await,
+        );
     }
 }
