@@ -33,7 +33,6 @@
   <a href="https://github.com/RustLangLatam/zeroclaw-api-client-rust/blob/master/docs/book/src/guides/resilience.md">Resilience</a> ·
   <a href="https://github.com/RustLangLatam/zeroclaw-api-client-rust/blob/master/docs/book/src/reference/endpoints.md">Endpoint map</a> ·
   <a href="https://github.com/RustLangLatam/zeroclaw-api-client-rust/blob/master/docs/book/src/architecture/overview.md">Architecture</a> ·
-  <a href="https://github.com/RustLangLatam/zeroclaw-api-client-go">Go client</a> ·
   <a href="https://github.com/zeroclaw-labs/zeroclaw">ZeroClaw</a>
 </p>
 
@@ -42,10 +41,6 @@
 `zeroclaw-api-client` is a typed, resilient, async Rust client for the
 [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw) gateway: its HTTP API,
 its Server-Sent Events stream and its WebSocket chat.
-
-Writing Go? [zeroclaw-api-client-go](https://github.com/RustLangLatam/zeroclaw-api-client-go)
-is its port, with the same surface, behavior and tests
-(`go get github.com/RustLangLatam/zeroclaw-api-client-go`).
 
 > An independent, community-maintained client. It is not affiliated with or
 > endorsed by ZeroClaw Labs; ZeroClaw is a trademark of ZeroClaw Labs.
@@ -232,6 +227,15 @@ verified against and the routes that need a newer one.
 - The book: `mdbook serve docs/book` — getting started, guides, reference,
   architecture and decisions.
 - The API: [docs.rs/zeroclaw-api-client](https://docs.rs/zeroclaw-api-client).
+
+## Other languages
+
+The same client, with the same surface, behavior and tests:
+
+| Language | Repository | Install |
+|---|---|---|
+| Go | [zeroclaw-api-client-go](https://github.com/RustLangLatam/zeroclaw-api-client-go) | `go get github.com/RustLangLatam/zeroclaw-api-client-go` |
+| Python | [zeroclaw-api-client-python](https://github.com/RustLangLatam/zeroclaw-api-client-python) | `pip install zeroclaw-api-client` |
 
 ## Contributing
 
