@@ -7,7 +7,7 @@ starts with its route, and `scripts/endpoint-map.py` collects them.
 Routes the client deliberately does not call:
 
 - inbound webhooks (`/whatsapp`, `/linq/{alias}`, `/nextcloud-talk/{alias}`,
-  `/webhook/gmail`, `/hooks/claude-code`, and the SOP trigger ingress
+  `/webhook/gmail`, the coding-agent hook under `/hooks/`, and the SOP trigger ingress
   `/sop/{path}`): providers and external systems call them, not clients;
 - `/api/plugins`, which only a `plugins-wasm` build has: not covered yet;
 - the bundled web UI (`/_app/*`) and the HTML API explorer (`/api/docs`);
