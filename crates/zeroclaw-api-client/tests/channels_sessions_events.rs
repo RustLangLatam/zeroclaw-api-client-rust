@@ -253,3 +253,37 @@ async fn streams_and_replays_events() {
         Some("tool_call")
     );
 }
+
+#[tokio::test]
+async fn redelivers_a_kept_message() {
+    let (server, client) = gateway().await;
+    expect(
+        "POST",
+        "/api/channels/email.box/messages/a@b.example/redeliver",
+    )
+    .respond_with(json(json!({
+        "channel": "email.box", "message_id": "a@b.example", "outcome": "redelivered"
+    })))
+    .mount(&server)
+    .await;
+    expect("POST", "/api/channels/email.box/messages/gone/redeliver")
+        .respond_with(ResponseTemplate::new(404).set_body_json(json!({
+            "channel": "email.box", "error": "message not kept"
+        })))
+        .mount(&server)
+        .await;
+
+    let channels = client.channels();
+    let done = channels
+        .redeliver("email.box", "a@b.example")
+        .await
+        .unwrap();
+    assert_eq!(done.outcome, "redelivered");
+    assert!(
+        channels
+            .redeliver("email.box", "gone")
+            .await
+            .unwrap_err()
+            .is_not_found()
+    );
+}

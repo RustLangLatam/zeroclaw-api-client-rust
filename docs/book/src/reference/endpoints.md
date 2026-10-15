@@ -60,6 +60,7 @@ build without it they answer 404 ([`Error::is_not_found`]):
 | `GET` | `/api/canvas/{id}/history` | `canvas` | `history` |
 | `GET` | `/api/channels` | `channels` | `list` |
 | `POST` | `/api/channels/bind` | `channels` | `bind` |
+| `POST` | `/api/channels/{channel}/messages/{message_id}/redeliver` | `channels` | `redeliver` |
 | `POST` | `/api/channels/{channel}/relink` | `channels` | `relink` |
 | `GET` | `/api/channels/{channel}/rooms` | `channels` | `rooms` |
 | `POST` | `/api/channels/{channel}/rooms` | `channels` | `create_room` |
