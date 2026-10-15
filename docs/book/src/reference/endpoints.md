@@ -10,15 +10,17 @@ Routes the client deliberately does not call:
   `/webhook/gmail`, the coding-agent hook under `/hooks/`, and the SOP trigger ingress
   `/sop/{path}`): providers and external systems call them, not clients;
 - `/api/plugins`, which only a `plugins-wasm` build has: not covered yet;
+- channel files, polls and delivery status (`POST /api/channels/{channel}/files`,
+  `POST …/polls`, `GET …/messages/{id}`): not covered yet;
 - the bundled web UI (`/_app/*`) and the HTML API explorer (`/api/docs`);
 - the daemon's own protocols: `/acp` (zerocode) and `/ws/nodes` (nodes);
 - aliases of routes the client calls: `/a2a/.well-known/agents-card.json`
   (same card as `/.well-known/agents-card.json`) and `GET /api/doctor` (same
   handler as `POST`).
 
-`scripts/route-drift.py <zeroclaw checkout>` compares this table with the
-routes the gateway's source declares, and CI runs it against the targeted
-fork branch.
+`scripts/route-drift.py` compares this table with the targeted gateway's
+routes, kept in `scripts/gateway-routes.txt`; CI runs it. With a ZeroClaw
+checkout as argument it first refreshes that list from the checkout's source.
 
 Some routes only exist when the gateway is built with a Cargo feature; on a
 build without it they answer 404 ([`Error::is_not_found`]):
