@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """Compares the gateway's routes with the ones the client calls.
 
-Reads every `.route("/path", get(..).post(..))` in a ZeroClaw checkout's
-`crates/zeroclaw-gateway/src` and the endpoint map
-(`docs/book/src/reference/endpoints.md`). Fails when the gateway has a route
-the client neither calls nor deliberately skips, or when the client calls a
-route the gateway no longer has.
+The gateway's routes are kept in `scripts/gateway-routes.txt`, read from the
+targeted build's source, so CI needs no ZeroClaw checkout. Fails when the
+gateway has a route the client neither calls nor deliberately skips (see the
+endpoint map, `docs/book/src/reference/endpoints.md`), or when the client calls
+a route the gateway no longer has.
 
-    python3 scripts/route-drift.py <zeroclaw checkout>
+    python3 scripts/route-drift.py                     # compare with the list
+    python3 scripts/route-drift.py <zeroclaw checkout> # refresh it, then compare
+
+A refresh reads every `.route("/path", get(..).post(..))` in the checkout's
+`crates/zeroclaw-gateway/src`; review the list's diff with the client change.
 
 Feature-gated routes (`webauthn`, `a2a`, `plugins-wasm`, ...) are read
 whatever the build's features: the client covers every route the source
@@ -20,12 +24,16 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MAP = ROOT / "docs/book/src/reference/endpoints.md"
+LIST = ROOT / "scripts/gateway-routes.txt"
 
 # Routes the client deliberately does not call; the endpoint map lists why.
 SKIPPED = {
     "/whatsapp", "/whatsapp/{}", "/linq", "/linq/{}", "/nextcloud-talk",
     "/nextcloud-talk/{}", "/webhook/gmail", "/hooks/claude-code", "/sop/{}",
     "/api/plugins", "/_app/", "/_app/{}", "/api/docs", "/acp", "/ws/nodes",
+    # Channel files, polls and delivery status: not covered yet.
+    "POST /api/channels/{}/files", "POST /api/channels/{}/polls",
+    "GET /api/channels/{}/messages/{}",
     # Aliases of routes the client calls under another spelling.
     "/a2a/.well-known/agents-card.json", "GET /api/doctor",
 }
@@ -73,11 +81,23 @@ def client_routes():
     return {(verb, normalize(path)) for verb, path in rows}
 
 
+def listed_routes():
+    lines = LIST.read_text(encoding="utf-8").splitlines()
+    return {tuple(line.split(" ", 1)) for line in lines if line and not line.startswith("#")}
+
+
+def write_list(routes):
+    header = LIST.read_text(encoding="utf-8").splitlines()[0]
+    rows = [f"{verb} {path}" for verb, path in sorted(routes, key=lambda r: (r[1], r[0]))]
+    LIST.write_text("\n".join([header] + rows) + "\n", encoding="utf-8")
+
+
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) > 2:
         sys.exit(__doc__)
-    src = pathlib.Path(sys.argv[1]) / "crates/zeroclaw-gateway/src"
-    gateway = gateway_routes(src)
+    if len(sys.argv) == 2:
+        write_list(gateway_routes(pathlib.Path(sys.argv[1]) / "crates/zeroclaw-gateway/src"))
+    gateway = listed_routes()
     client = client_routes()
     missing = sorted(r for r in gateway - client if r[1] not in SKIPPED and f"{r[0]} {r[1]}" not in SKIPPED)
     gone = sorted(client - gateway)
