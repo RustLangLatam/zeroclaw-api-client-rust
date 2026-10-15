@@ -86,6 +86,29 @@ impl ChannelsApi<'_> {
         self.client.empty(request).await
     }
 
+    /// `POST /api/channels/{channel}/messages/{message_id}/redeliver`: hands
+    /// a received message to its agent again, unchanged, as a new turn
+    /// that runs after any turn already running for that sender. The gateway
+    /// keeps only recent inbound messages, in memory: one it no longer keeps
+    /// answers 404 ([`crate::Error::is_not_found`]). `message_id` is the one
+    /// MCP calls carry as `_meta["zeroclaw/message_id"]` (for email, the
+    /// Message-ID without angle brackets).
+    pub async fn redeliver(&self, channel: &str, message_id: &str) -> Result<Redelivered> {
+        let request = self.client.request(
+            Method::POST,
+            &[
+                "api",
+                "channels",
+                channel,
+                "messages",
+                message_id,
+                "redeliver",
+            ],
+            &[],
+        )?;
+        self.client.json(request).await
+    }
+
     /// `GET /api/channels/{channel}/rooms`: the group chats the running
     /// channel takes part in.
     pub async fn rooms(&self, channel: &str) -> Result<Vec<RoomSummary>> {
@@ -215,6 +238,17 @@ pub struct Relinked {
     /// The gateway's note.
     #[serde(default)]
     pub note: Option<String>,
+}
+
+/// Result of [`ChannelsApi::redeliver`].
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Redelivered {
+    /// The channel.
+    pub channel: String,
+    /// The message.
+    pub message_id: String,
+    /// `redelivered`.
+    pub outcome: String,
 }
 
 /// A group chat.
