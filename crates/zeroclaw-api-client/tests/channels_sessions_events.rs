@@ -52,103 +52,18 @@ async fn lists_binds_and_relinks_channels() {
 }
 
 #[tokio::test]
-async fn sends_and_manages_group_chats() {
-    let (server, client) = gateway().await;
-    let room = "120363000000000000@g.us";
-    expect("POST", "/api/channels/whatsapp.main/send")
-        .and(body_json(
-            json!({ "to": "+34600000000", "content": "Hola", "thread_id": null }),
-        ))
-        .respond_with(json(
-            json!({ "channel": CHANNEL, "to": "+34600000000", "outcome": "sent" }),
-        ))
-        .mount(&server)
-        .await;
-    expect("GET", "/api/channels/whatsapp.main/rooms")
-        .respond_with(json(json!({ "channel": CHANNEL, "rooms": [
-            { "id": room, "name": "Team", "participants": 3 }
-        ] })))
-        .mount(&server)
-        .await;
-    expect("POST", "/api/channels/whatsapp.main/rooms")
-        .and(body_json(
-            json!({ "name": "Team", "topic": null, "invites": ["+34600000000"] }),
-        ))
-        .respond_with(json(json!({
-            "channel": CHANNEL, "room": room, "outcome": "created",
-            "participants": [{ "user": "+34600000000", "outcome": "added", "detail": null }]
-        })))
-        .mount(&server)
-        .await;
-    expect(
-        "GET",
-        &format!("/api/channels/whatsapp.main/rooms/{room}/members"),
-    )
-    .respond_with(json(json!({ "channel": CHANNEL, "room": room, "members": [
-            { "id": "+34600000000", "admin": true }
-        ] })))
-    .mount(&server)
-    .await;
-    expect("POST", &format!("/api/channels/whatsapp.main/rooms/{room}/invites"))
-        .and(body_json(json!({ "user": "+34611111111" })))
-        .respond_with(json(json!({
-            "channel": CHANNEL, "room": room, "user": "+34611111111", "outcome": "invited", "detail": null
-        })))
-        .mount(&server)
-        .await;
-    expect(
-        "DELETE",
-        &format!("/api/channels/whatsapp.main/rooms/{room}/members/+34611111111"),
-    )
-    .respond_with(json(json!({
-        "channel": CHANNEL, "room": room, "user": "+34611111111", "outcome": "removed"
-    })))
-    .mount(&server)
-    .await;
-
-    let channels = client.channels();
-    channels
-        .send(CHANNEL, "+34600000000", "Hola", None)
-        .await
-        .unwrap();
-    assert_eq!(channels.rooms(CHANNEL).await.unwrap()[0].participants, 3);
-    let created = channels
-        .create_room(CHANNEL, "Team", None, &["+34600000000"])
-        .await
-        .unwrap();
-    assert_eq!(created.participants[0].outcome, "added");
-    assert!(channels.room_members(CHANNEL, room).await.unwrap()[0].admin);
-    assert_eq!(
-        channels
-            .invite(CHANNEL, room, "+34611111111")
-            .await
-            .unwrap()
-            .outcome,
-        "invited"
-    );
-    channels
-        .remove_member(CHANNEL, room, "+34611111111")
-        .await
-        .unwrap();
-}
-
-#[tokio::test]
 async fn channel_refusals_keep_their_reason() {
     let (server, client) = gateway().await;
-    expect("POST", "/api/channels/whatsapp.main/send")
-        .respond_with(ResponseTemplate::new(403).set_body_json(json!({
-            "channel": CHANNEL, "error": "channel whatsapp.main is not in [gateway] send_channels"
+    expect("POST", "/api/channels/whatsapp.gone/relink")
+        .respond_with(ResponseTemplate::new(404).set_body_json(json!({
+            "channel": "whatsapp.gone", "error": "unknown channel whatsapp.gone"
         })))
         .mount(&server)
         .await;
 
-    let error = client
-        .channels()
-        .send(CHANNEL, "x", "y", None)
-        .await
-        .unwrap_err();
-    assert!(error.is_unauthorized());
-    assert!(error.to_string().contains("send_channels"));
+    let error = client.channels().relink("whatsapp.gone").await.unwrap_err();
+    assert!(error.is_not_found());
+    assert!(error.to_string().contains("unknown channel"));
 }
 
 #[tokio::test]
@@ -251,39 +166,5 @@ async fn streams_and_replays_events() {
     assert_eq!(
         client.events().history().await.unwrap()[0].kind(),
         Some("tool_call")
-    );
-}
-
-#[tokio::test]
-async fn redelivers_a_kept_message() {
-    let (server, client) = gateway().await;
-    expect(
-        "POST",
-        "/api/channels/email.box/messages/a@b.example/redeliver",
-    )
-    .respond_with(json(json!({
-        "channel": "email.box", "message_id": "a@b.example", "outcome": "redelivered"
-    })))
-    .mount(&server)
-    .await;
-    expect("POST", "/api/channels/email.box/messages/gone/redeliver")
-        .respond_with(ResponseTemplate::new(404).set_body_json(json!({
-            "channel": "email.box", "error": "message not kept"
-        })))
-        .mount(&server)
-        .await;
-
-    let channels = client.channels();
-    let done = channels
-        .redeliver("email.box", "a@b.example")
-        .await
-        .unwrap();
-    assert_eq!(done.outcome, "redelivered");
-    assert!(
-        channels
-            .redeliver("email.box", "gone")
-            .await
-            .unwrap_err()
-            .is_not_found()
     );
 }

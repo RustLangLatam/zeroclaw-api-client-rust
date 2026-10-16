@@ -1,6 +1,6 @@
-//! Posts a message on a channel through an agent's channel binding, on
-//! builds without `/api/channels/{channel}/send`: a one-off shell cron job
-//! whose raw output is announced, run at once and deleted.
+//! Posts a message on a channel through an agent's channel binding: a
+//! one-off shell cron job whose raw output is announced, run at once and
+//! deleted.
 //!
 //! ```sh
 //! ZEROCLAW_URL=… ZEROCLAW_TOKEN=… cargo run --example announce -- helper whatsapp.main +34600000000 "Hello"
