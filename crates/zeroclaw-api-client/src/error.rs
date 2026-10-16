@@ -159,8 +159,8 @@ mod tests {
             ),
             (
                 403,
-                r#"{"channel":"whatsapp.main","error":"not in send_channels"}"#,
-                "not in send_channels",
+                r#"{"channel":"whatsapp.main","error":"unknown channel"}"#,
+                "unknown channel",
                 false,
                 true,
                 false,

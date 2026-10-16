@@ -10,8 +10,6 @@ Routes the client deliberately does not call:
   `/webhook/gmail`, the coding-agent hook under `/hooks/`, and the SOP trigger ingress
   `/sop/{path}`): providers and external systems call them, not clients;
 - `/api/plugins`, which only a `plugins-wasm` build has: not covered yet;
-- channel files, polls and delivery status (`POST /api/channels/{channel}/files`,
-  `POST …/polls`, `GET …/messages/{id}`): not covered yet;
 - the bundled web UI (`/_app/*`) and the HTML API explorer (`/api/docs`);
 - the daemon's own protocols: `/acp` (zerocode) and `/ws/nodes` (nodes);
 - aliases of routes the client calls: `/a2a/.well-known/agents-card.json`
@@ -62,14 +60,7 @@ build without it they answer 404 ([`Error::is_not_found`]):
 | `GET` | `/api/canvas/{id}/history` | `canvas` | `history` |
 | `GET` | `/api/channels` | `channels` | `list` |
 | `POST` | `/api/channels/bind` | `channels` | `bind` |
-| `POST` | `/api/channels/{channel}/messages/{message_id}/redeliver` | `channels` | `redeliver` |
 | `POST` | `/api/channels/{channel}/relink` | `channels` | `relink` |
-| `GET` | `/api/channels/{channel}/rooms` | `channels` | `rooms` |
-| `POST` | `/api/channels/{channel}/rooms` | `channels` | `create_room` |
-| `POST` | `/api/channels/{channel}/rooms/{room}/invites` | `channels` | `invite` |
-| `GET` | `/api/channels/{channel}/rooms/{room}/members` | `channels` | `room_members` |
-| `DELETE` | `/api/channels/{channel}/rooms/{room}/members/{user}` | `channels` | `remove_member` |
-| `POST` | `/api/channels/{channel}/send` | `channels` | `send` |
 | `GET` | `/api/cli-tools` | `system` | `cli_tools` |
 | `GET` | `/api/config` | `config` | `snapshot` |
 | `OPTIONS` | `/api/config` | `config` | `schema` |

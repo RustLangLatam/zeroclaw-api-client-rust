@@ -380,17 +380,9 @@ mod tests {
             ),
             (
                 "http://gw",
-                &[
-                    "api",
-                    "channels",
-                    "whatsapp.main",
-                    "rooms",
-                    "1203@g.us",
-                    "members",
-                    "+34600",
-                ],
+                &["api", "sessions", "whatsapp_1203@g.us+34600", "messages"],
                 &[],
-                "http://gw/api/channels/whatsapp.main/rooms/1203@g.us/members/+34600",
+                "http://gw/api/sessions/whatsapp_1203@g.us+34600/messages",
             ),
             (
                 "http://gw",

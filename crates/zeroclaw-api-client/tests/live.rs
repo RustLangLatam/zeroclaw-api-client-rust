@@ -93,21 +93,6 @@ async fn every_read_decodes() {
         client.webauthn().credentials("live").await,
     );
 
-    let channels = client.channels().list().await.unwrap();
-    for channel in &channels {
-        if let Ok(rooms) = client.channels().rooms(&channel.name).await {
-            eprintln!("ok      rooms of {}: {}", channel.name, rooms.len());
-            if let Some(room) = rooms.first() {
-                check(
-                    "room_members",
-                    client
-                        .channels()
-                        .room_members(&channel.name, &room.id)
-                        .await,
-                );
-            }
-        }
-    }
     if let Some(session) = client.sessions().list().await.unwrap().first() {
         let id = session
             .session_key
