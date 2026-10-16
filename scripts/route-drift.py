@@ -31,6 +31,9 @@ SKIPPED = {
     "/whatsapp", "/whatsapp/{}", "/linq", "/linq/{}", "/nextcloud-talk",
     "/nextcloud-talk/{}", "/webhook/gmail", "/hooks/claude-code", "/sop/{}",
     "/api/plugins", "/_app/", "/_app/{}", "/api/docs", "/acp", "/ws/nodes",
+    # Channel files, polls and delivery status: not covered yet.
+    "POST /api/channels/{}/files", "POST /api/channels/{}/polls",
+    "GET /api/channels/{}/messages/{}",
     # Aliases of routes the client calls under another spelling.
     "/a2a/.well-known/agents-card.json", "GET /api/doctor",
 }

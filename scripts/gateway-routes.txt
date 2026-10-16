@@ -1,4 +1,4 @@
-# Routes of the official ZeroClaw v0.8.5 gateway; refresh with scripts/route-drift.py <checkout>
+# Routes of the ZeroClaw 0.8.5+unified.18 gateway; refresh with scripts/route-drift.py <checkout>
 GET /.well-known/agents-card.json
 GET /_app/
 GET /_app/{}
@@ -29,7 +29,17 @@ POST /api/canvas/{}
 GET /api/canvas/{}/history
 GET /api/channels
 POST /api/channels/bind
+POST /api/channels/{}/files
+GET /api/channels/{}/messages/{}
+POST /api/channels/{}/messages/{}/redeliver
+POST /api/channels/{}/polls
 POST /api/channels/{}/relink
+GET /api/channels/{}/rooms
+POST /api/channels/{}/rooms
+POST /api/channels/{}/rooms/{}/invites
+GET /api/channels/{}/rooms/{}/members
+DELETE /api/channels/{}/rooms/{}/members/{}
+POST /api/channels/{}/send
 GET /api/cli-tools
 GET /api/config
 OPTIONS /api/config

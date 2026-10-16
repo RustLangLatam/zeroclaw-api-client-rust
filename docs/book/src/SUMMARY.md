@@ -7,7 +7,7 @@
 - [Guides](./guides/index.md)
   - [Configuration](./guides/configuration.md)
   - [Agents, personality and skills](./guides/agents.md)
-  - [Channels](./guides/channels.md)
+  - [Channels and group chats](./guides/channels.md)
   - [Chatting with an agent](./guides/chat.md)
   - [Sessions and live events](./guides/events.md)
   - [Cron, memory and cost](./guides/operations.md)
